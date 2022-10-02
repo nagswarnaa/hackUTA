@@ -35,7 +35,6 @@ export default function SignIn() {
             password: data.get('password'),
         });
     };
-
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">

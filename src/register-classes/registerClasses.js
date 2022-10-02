@@ -1,7 +1,6 @@
-import { Select, MenuItem, FormHelperText, FormControl, InputLabel, Typography, Button } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Classes from './listOfCourses';
+import { Select, MenuItem, FormHelperText, FormControl, InputLabel, Typography, Button } from '@material-ui/core';
 
 function RegisterClasses() {
     const [selectedYear, setYearSelected] = useState('');

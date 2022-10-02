@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import { useLocation } from "react-router-dom";
-import { Button, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import React from 'react';
+import { List, ListItem, ListItemText } from '@mui/material';
 
 export default class Attendance extends React.Component {
     constructor(props) {
@@ -20,7 +19,6 @@ export default class Attendance extends React.Component {
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({ Attendance: responseJson })
-
             })
             .catch((error) => {
                 console.log("Error")
@@ -36,7 +34,7 @@ export default class Attendance extends React.Component {
                             <ListItemText primaryTypographyProps={{ fontSize: '30px' }} key={(Math.random() + Math.random())} primary={course.courseId} />
                             <ListItemText primaryTypographyProps={{ fontSize: '30px' }} key={(Math.random() + Math.random())} primary={course.course_name} />
                             <ListItemText primaryTypographyProps={{ fontSize: '30px' }} key={(Math.random() + Math.random())} primary={course.date} />
-                            <ListItemText primaryTypographyProps={{ fontSize: '30px' }} key={(Math.random() + Math.random())} primary={course.present === true ? "Present" : "absent"} />
+                            <ListItemText primaryTypographyProps={{ fontSize: '30px' }} key={(Math.random() + Math.random())} primary={course.present === true ? "Present" : "Absent"} />
                             <ListItemText primaryTypographyProps={{ fontSize: '30px' }} key={(Math.random() + Math.random())} primary={course.term + " " + course.year} />
                         </ListItem>
                     )

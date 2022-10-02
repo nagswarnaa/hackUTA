@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import React from 'react';
 import DisplayCard from './displayCard';
 
 export default class MainContainer extends React.Component {
@@ -11,10 +10,9 @@ export default class MainContainer extends React.Component {
     }
     componentWillMount() {
         this.renderMyData();
-
     }
     renderMyData() {
-        fetch('https://hackutadev.herokuapp.com/courses/user/1')
+        fetch('http://34.71.56.116:8080/courses/user/1')
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({ courses: responseJson })
