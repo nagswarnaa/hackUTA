@@ -7,6 +7,7 @@ import Navbar from './main-container/navbar';
 import SignUp from './signup/signup';
 import RegisterClasses from './register-classes/registerClasses';
 import Classes from './register-classes/listOfCourses';
+import Attendance from './main-container/attendance';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/register" element={<SignUp />} />
         <Route path="/registercls" element={<RegisterClasses />} />
         <Route path="/cls" element={<Classes />} />
+        <Route path="/attn" element={<Attendance />} />
       </Routes>
     </Router>
   );

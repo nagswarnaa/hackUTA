@@ -14,11 +14,10 @@ export default class MainContainer extends React.Component {
 
     }
     renderMyData() {
-        fetch('http://34.71.56.116:8080/courses/user/1')
+        fetch('https://hackutadev.herokuapp.com/courses/user/1')
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({ courses: responseJson })
-                console.log(this.state.courses)
             })
             .catch((error) => {
                 console.log("Error")

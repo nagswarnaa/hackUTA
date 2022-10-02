@@ -1,29 +1,7 @@
 import React, { Component } from 'react';
 import { Button, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 
-const handleClick = (course) => {
-    let _data = {
-        courseId: 3,
-        userId: 1
-    };
-    fetch('http://34.71.56.116:8080/courses/register', {
-        method: "POST",
-        mode: 'no-cors',
-        body: JSON.stringify(_data),
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    })
-        .then((response) => response.json())
-        .then((responseJson) => {
-            console.log(responseJson)
-        })
-        .catch((error) => {
-            console.log("Error")
-            console.error(error);
-        });
-}
+
 export default class Classes extends React.Component {
     constructor(props) {
         super(props);
@@ -36,8 +14,30 @@ export default class Classes extends React.Component {
     componentWillMount() {
         this.renderMyData();
     }
+    handleClick(course) {
+        let _data = {
+            courseId: course,
+            userId: 1
+        };
+        const requestOptions = {
+            method: 'POST',
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify(_data)
+        };
+
+        fetch('http://34.71.56.116:8080/courses/register', requestOptions)
+            .then(response => response.json())
+            .then(data => console.log(data),
+                window.location = '/'
+            )
+            .catch((error) => {
+                console.log("Error")
+                console.error(error);
+            });
+
+    }
     renderMyData() {
-        fetch('http://34.71.56.116:8080/courses/' + this.state.year + '/' + this.state.term)
+        fetch('https://hackutadev.herokuapp.com/courses/' + this.state.year + '/' + this.state.term)
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({ courses: responseJson })
@@ -59,7 +59,7 @@ export default class Classes extends React.Component {
                             <ListItemText primaryTypographyProps={{ fontSize: '30px' }} key={(Math.random() + Math.random())} primary={course.days + " " + course.time} />
                             <ListItemText primaryTypographyProps={{ fontSize: '30px' }} key={(Math.random() + Math.random())} primary={course.term + " " + course.year} />
                             <ListItemButton>
-                                <Button variant="contained" color="primary" onClick={() => handleClick(course.id)}> Register</Button>
+                                <Button variant="contained" color="primary" onClick={(course) => this.handleClick(course.id)}> Register</Button>
                             </ListItemButton>
                         </ListItem>
                     )
